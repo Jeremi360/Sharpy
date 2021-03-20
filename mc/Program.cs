@@ -32,6 +32,7 @@ namespace rc
       {
         Console.Write(" ");
         Console.Write(t.Value);
+        Console.WriteLine();
       }
 
       indent += "    ";

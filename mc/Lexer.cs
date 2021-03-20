@@ -4,11 +4,10 @@ namespace rc
 {
   public class Lexer
   {
-    private string _code;
     private int _pos;
     public Lexer(string code)
     {
-      _code = code;
+      Code = code;
     }
 
     private char Current
@@ -24,7 +23,7 @@ namespace rc
       }
     }
 
-    public string Code => _code;
+    public string Code { get; }
 
     private void Next()
     {
