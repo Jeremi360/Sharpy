@@ -16,23 +16,30 @@ namespace rc
           return;
         }
 
-        var lexer = new Lexer(line);
-        while (true)
-        {
-          var token = lexer.NextToken();
-          if (token.Kind == SyntaxKind.EOFToken)
-          {
-            break;
-          }
-          Console.Write($"{token.Kind}: '{token.Code}'");
-          if (token.Value != null)
-          {
-            Console.Write($" {token.Value}");
-          }
-          Console.WriteLine();
-        }
-
+        var parser = new Parser(line);
+        var expression = parser.Parse();
+        var color = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        PrettyPrint(expression);
+        Console.ForegroundColor = color;
       }
+    }
+
+    static void PrettyPrint(SyntaxNode node, string indent = "")
+    {
+      Console.Write(node.Kind);
+      if (node is SyntaxToken t && t.Value != null)
+      {
+        Console.Write(" ");
+        Console.Write(t.Value);
+      }
+
+      indent += "    ";
+      foreach (var child in node.GetChildren())
+      {
+        PrettyPrint(child, indent);
+      }
+
     }
   }
 }

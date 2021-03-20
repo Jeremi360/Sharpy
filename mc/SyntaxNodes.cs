@@ -24,6 +24,11 @@ namespace rc
 
     public override SyntaxKind Kind => SyntaxKind.NumberExpression;
     public SyntaxToken NumberToken { get; }
+
+    public override IEnumerable<SyntaxNode> GetChildren()
+    {
+      yield return NumberToken;
+    }
   }
 
   public sealed class BinaryExpressionSyntax : ExpressionSyntax
@@ -39,5 +44,12 @@ namespace rc
     public ExpressionSyntax Left { get; }
     public SyntaxToken OperatorToken { get; }
     public ExpressionSyntax Right { get; }
+
+    public override IEnumerable<SyntaxNode> GetChildren()
+    {
+      yield return Left;
+      yield return OperatorToken;
+      yield return Right;
+    }
   }
 }
