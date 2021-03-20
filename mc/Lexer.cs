@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace rc
 {
   public class Lexer
   {
     private int _pos;
+    private List<string> _diagnostics = new();
+    public IEnumerable<string> Diagnostics => _diagnostics;
     public Lexer(string code)
     {
       Code = code;
@@ -91,6 +95,7 @@ namespace rc
           return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _pos++, ")", null);
       }
 
+      _diagnostics.Add($"Error: Unexpected Input {_pos} : {Current}");
       return new SyntaxToken(SyntaxKind.BadToken, _pos++, Code.Substring(_pos - 1, 1), null);
 
     }

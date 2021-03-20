@@ -9,6 +9,9 @@ namespace rc
     private readonly SyntaxToken[] _tokens;
     private int _pos;
 
+    private List<string> _diagnostics = new();
+    public IEnumerable<string> Diagnostics => _diagnostics;
+
     public Parser(string code)
     {
       var tokens = new List<SyntaxToken>();
@@ -18,7 +21,7 @@ namespace rc
       {
         token = lexer.NextToken();
         if (token.Kind != SyntaxKind.SpaceToken
-        || token.Kind != SyntaxKind.BadToken)
+        && token.Kind != SyntaxKind.BadToken)
         {
           tokens.Add(token);
         }
@@ -26,6 +29,7 @@ namespace rc
       }
       while (token.Kind != SyntaxKind.EOFToken);
       _tokens = tokens.ToArray();
+      _diagnostics.AddRange(lexer.Diagnostics);
     }
 
     private SyntaxToken LookAhead(int offset)
@@ -55,6 +59,7 @@ namespace rc
         return NextToken();
       }
 
+      _diagnostics.Add($"Error: Unexpected Token {Current.Pos} : {Current.Value} -> {Current.Kind} , expected: {kind}");
       return new SyntaxToken(kind, Current.Pos, null, null);
     }
 
