@@ -3,7 +3,7 @@
 
 # Myhton
 My own programing langue.
-Inspired by Python, CSharp, CoffeeScript, Markdown and MVC.
+Inspired by Python, CSharp, CoffeeScript and MVC.
 
 ## Mython Concepts
 
