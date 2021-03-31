@@ -13,9 +13,10 @@ Inspired by Python, CSharp, CoffeeScript, GDScript and MVC.
 - use **MC** and **MVC** patters
 - use of **TOML** for models serialization
 - expandable enums at runtime
-- `static` like `static` in C# 
-- simple `switch` like GDScript's `match`
-- getset like in C#
+- `static` like `static` in **C#** 
+- simple `switch` like **GDScript**'s `match`
+- getset like in **C#**
+- no `else` only `if` and `return`
 
 ## Hello Myhton
 
