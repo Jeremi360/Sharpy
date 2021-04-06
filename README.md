@@ -16,7 +16,6 @@ Inspired by Python, CSharp, CoffeeScript, GDScript and MVC.
 - `static` like `static` in **C#** 
 - simple `switch` like **GDScript**'s `match`
 - getset like in **C#**
-- no `else` only `if` and `return`
 
 ## Hello Myhton
 
