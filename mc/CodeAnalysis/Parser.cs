@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Minsk.Helper;
 
-namespace rc
+namespace Minsk.CodeAnalysis
 {
   public class Parser
   {
@@ -63,12 +64,38 @@ namespace rc
       return new SyntaxToken(kind, Current.Pos, null, null);
     }
 
-    public ExpressionSyntax Parse()
+    public SyntaxTree Parse()
+    {
+      var expression = ParseTerm();
+      var endOfFileToken = Match(SyntaxKind.EOFToken);
+
+      return new SyntaxTree(Diagnostics, expression, endOfFileToken);
+    }
+
+    private ExpressionSyntax ParseTerm()
+    {
+      var left = ParseFactor();
+
+      while (Current.Kind.In(
+        SyntaxKind.PlusToken, SyntaxKind.MinusToken
+        ))
+      {
+        var operatorToken = NextToken();
+        var right = ParseFactor();
+        left = new BinaryExpressionSyntax(left, operatorToken, right);
+
+      }
+
+      return left;
+    }
+
+    private ExpressionSyntax ParseFactor()
     {
       var left = ParsePrimaryExperssion();
 
-      while (Current.Kind == SyntaxKind.PlusToken
-      || Current.Kind == SyntaxKind.MinusToken)
+      while (Current.Kind.In(
+        SyntaxKind.DivToken, SyntaxKind.MultToken
+        ))
       {
         var operatorToken = NextToken();
         var right = ParsePrimaryExperssion();
@@ -81,6 +108,14 @@ namespace rc
 
     private ExpressionSyntax ParsePrimaryExperssion()
     {
+      if (Current.Kind == SyntaxKind.OpenParenthesisToken)
+      {
+        var left = NextToken();
+        var expression = ParseTerm();
+        var right = Match(SyntaxKind.CloseParenthesisToken);
+        return new ParenthesizedExpressionSyntax(left, expression, right);
+      }
+
       var NumberToken = Match(SyntaxKind.NumberToken);
       return new NumberExpressionSyntax(NumberToken);
     }

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
-namespace rc
+namespace Minsk.CodeAnalysis
 {
   public class Lexer
   {
@@ -55,7 +56,12 @@ namespace rc
 
         int length = _pos - start;
         var code = Code.Substring(start, length);
-        _ = int.TryParse(code, out var value);
+
+        if (!int.TryParse(code, out var value))
+        {
+          _diagnostics.Add($"A number {code} isn't valid Int");
+        }
+
         return new SyntaxToken(SyntaxKind.NumberToken, start, code, value);
       }
 

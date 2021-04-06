@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace rc
+namespace Minsk.CodeAnalysis
 {
   public abstract class SyntaxNode
   {

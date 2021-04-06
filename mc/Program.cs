@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-
-namespace rc
+using Minsk.CodeAnalysis;
+namespace Minsk
 {
   class Program
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Hello User give me some math!");
+      bool showTree = false;
       while (true)
       {
         Console.Write("> ");
@@ -17,21 +17,45 @@ namespace rc
           return;
         }
 
-        var parser = new Parser(line);
-        var expression = parser.Parse();
-        var color = Console.ForegroundColor;
-        Console.ForegroundColor = ConsoleColor.Green;
-        PrettyPrint(expression);
-        Console.ForegroundColor = color;
+        if (line == "#showTree")
+        {
+          showTree = !showTree;
+          Console.WriteLine($"ShowTree option is {showTree}");
+          continue;
+        }
 
-        if (parser.Diagnostics.Any())
+        if (line == "#clear")
+        {
+          Console.Clear();
+          continue;
+        }
+
+        var syntaxTree = SyntaxTree.Parse(line);
+
+        var color = Console.ForegroundColor;
+
+        if (showTree)
+        {
+          Console.ForegroundColor = ConsoleColor.Green;
+          PrettyPrint(syntaxTree.Root);
+          Console.ForegroundColor = color;
+        }
+
+        if (!syntaxTree.Diagnostics.Any())
+        {
+          var e = new Evaluator(syntaxTree.Root);
+          var result = e.Evaluate();
+          Console.WriteLine(result);
+        }
+
+        else
         {
           Console.ForegroundColor = ConsoleColor.Red;
 
-          foreach (var diagnostic in parser.Diagnostics)
+          foreach (var diagnostic in syntaxTree.Diagnostics)
           {
             Console.WriteLine(diagnostic);
-          
+
           }
 
           Console.ForegroundColor = color;

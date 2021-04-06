@@ -1,4 +1,4 @@
-namespace rc
+namespace Minsk.CodeAnalysis
 {
   public enum SyntaxKind
   {
@@ -17,6 +17,7 @@ namespace rc
     /// </summary>
     EOFToken,
     NumberExpression,
-    BinaryExpression
+    BinaryExpression,
+    ParenthesizedExpression
   }
 }

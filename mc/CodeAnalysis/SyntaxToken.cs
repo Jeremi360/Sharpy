@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace rc
+namespace Minsk.CodeAnalysis
 {
   public class SyntaxToken : SyntaxNode
   {
