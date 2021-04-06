@@ -1,5 +1,8 @@
 {
   "editor.defaultFormatter": "ms-dotnettools.csharp",
   "csproj.enabled": true,
-  "csproj.excludeRegex": "**/*.cs"
+  "csproj.excludeRegex": "**/*.cs",
+  "cSpell.words": [
+    "mython"
+  ]
 }

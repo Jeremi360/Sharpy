@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Program.cs" />
+    <Content Include="Helper.cs" />
+    <Content Include="CodeAnalysis\SyntaxNodes.cs" />
+    <Content Include="CodeAnalysis\SyntaxToken.cs" />
+    <Content Include="CodeAnalysis\SyntaxTree.cs" />
+    <Content Include="CodeAnalysis\SyntaxKind.cs" />
+    <Content Include="CodeAnalysis\Parser.cs" />
+    <Content Include="CodeAnalysis\BracketedExpressionSyntax.cs" />
+    <Content Include="CodeAnalysis\Lexer.cs" />
+    <Content Include="CodeAnalysis\Evaluator.cs" />
+  </ItemGroup>
+</Project>

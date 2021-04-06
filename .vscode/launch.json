@@ -2,26 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
-      // Use IntelliSense to find out which attributes exist for C# debugging
-      // Use hover for the description of the existing attributes
-      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-      "name": ".NET Minsk (console)",
+      "name": ".NET Mython (console)",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
-      // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/mc/bin/Debug/net5.0/mc.dll",
+      "preLaunchTask": "build-mython",
+      "program": "${workspaceFolder}/myc/bin/Debug/net5.0/myc.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/mc",
-      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "cwd": "${workspaceFolder}/myc",
       "console": "externalTerminal",
       "stopAtEntry": false
     },
     {
-      "name": ".NET Core Attach",
+      "name": ".NET Minsk (console)",
       "type": "coreclr",
-      "request": "attach",
-      "processId": "${command:pickProcess}"
-    }
+      "request": "launch",
+      "preLaunchTask": "build-minsk",
+      "program": "${workspaceFolder}/mc/bin/Debug/net5.0/mc.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/mc",
+      "console": "externalTerminal",
+      "stopAtEntry": false
+    },
+
   ]
 }
