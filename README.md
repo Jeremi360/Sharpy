@@ -69,7 +69,6 @@ model SomeModel:
   there is only some staff for render, ui or editor in game engines
   some vars, properties (*getset*), add special ui/render/editor functions
 
-
 ```coffee
 # SomeViewer.my
 package SomeApp
@@ -125,6 +124,13 @@ controller SomeClass:
   # you can split your logic to few different controllers if needed
   use SomeOtherController
 
+```
+
+- this also means easier dealing with types, beacuse you can do this:
+
+```coffee
+model<SomeModel> some_var;
+controller<SomeController> some_var;
 ```
 
 ## Switch
