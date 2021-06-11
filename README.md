@@ -14,6 +14,10 @@ Inspired by Python, CSharp, CoffeeScript, GDScript and MVC.
 - `static` like `static` in **C#** 
 - simple `switch` like **GDScript**'s `match`
 - getset like in **C#**
+- only easy to understand sugar code, **non** lambdas
+- `skip` instead of confusing `continue` in `for` loop
+- `wait` instead of confusing `yield`
+- commas (`,`) are optional 
 
 ## Hello Myhton
 
@@ -44,7 +48,7 @@ package SomeApp
 
 model SomeModel:
   const x = 3
-  some_var = "x"
+  var some_var = "x"
   str some_string = "a"
   bool boolean_var = true #or false 
   int some_int = 2
@@ -57,9 +61,9 @@ model SomeModel:
   # dict can be mixed in the similar way as list
 
   # like in python there is no real private
-  _some_prev_var = "this is private!"
+  var _some_prev_var = "this is private!"
 
-  enum SomeEnum: One, Two, Three
+  enum SomeEnum: One Two Three
 
 ``` 
 
@@ -78,10 +82,10 @@ controller SomeViewer(Window):
   use AnotherModel
 
   attr SomeUIAttribute
-  some_ui_useful_var = "text"
+  var some_ui_useful_var = "text"
 
-  def init(string title = "Myhton Window App"):
-    enum.Add("Four")
+  def init(str title = "Myhton Window App"):
+    SomeEnum.Add("Four")
     base.init(title)
 
   on ui_update
@@ -103,11 +107,11 @@ controller SomeController:
   # if need controller can use different models if needed
   use YetAnotherModel
 
-  some_var => _some_prev_var
+  var some_var => _some_prev_var
 
   on game_input
-  def move_the_player list inputs:
-    pass()
+  def move_the_player(list inputs):
+    pass
 
 ```
 
@@ -124,7 +128,7 @@ controller SomeClass:
 
 ```
 
-- this also means easier dealing with types, beacuse you can do this:
+- this also means easier dealing with types, because you can do this:
 
 ```coffee
 model<SomeModel> some_var;
@@ -146,7 +150,7 @@ switch x:
 ## Set Get
 
 ```coffee
-some_readonly_var => some_other_var
+var some_readonly_var => some_other_var
 
 get some_var:
   return some_another_var

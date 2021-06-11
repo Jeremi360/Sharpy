@@ -133,3 +133,6 @@ $RECYCLE.BIN/
 _NCrunch*
 
 # .vscode/
+
+# ANTLR
+.antlr/ 
