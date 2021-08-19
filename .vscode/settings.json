@@ -3,6 +3,7 @@
   "csproj.enabled": true,
   "csproj.excludeRegex": "**/*.cs",
   "cSpell.words": [
+    "getset",
     "mython"
   ]
 }

@@ -1,0 +1,80 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+94104759490400[ label="{Script|}"]
+
+94104759674112[ label="{Package|name: list[MyID]\l}"]
+
+94104759679648[ label="{Import|}"]
+
+94104759685184[ label="{MC|name: MyID\l}"]
+
+94104759691312[ label="{Use|}"]
+
+94104759697968[ label="{Type|}"]
+
+94104759702912[ label="{ListType|}"]
+
+94104759677648[ label="{DictType|}"]
+
+94104759512176[ label="{Expression|}"]
+
+94104759695968[ label="{STATIC|static: optional\<BOOL\>\l}"]
+
+94104759710192[ label="{Var_Mod|const: optional\<BOOL\>\l}"]
+
+94104759715728[ label="{*Variable|}"]
+
+94104759721264[ label="{Var|name: MyID\lvalue: optional\<BOOL\>\l}"]
+
+94104759726800[ label="{Typed_Var|name: MyID\lvalue: optional\<BOOL\>\l}"]
+
+94104759732336[ label="{List|name: MyID\lvalue: optional\<BOOL\>\l}"]
+
+94104759737872[ label="{DictPair|}"]
+
+94104759743408[ label="{Dict|name: MyID\lvalue: optional\<BOOL\>\l}"]
+
+94104759713728[ label="{Func|name: MyID\l}"]
+
+
+
+94104759490400 -> 94104759679648[arrowtail=diamond, dir=both, headlabel="imports 0..*"]
+94104759490400 -> 94104759685184[arrowtail=diamond, dir=both, headlabel="name "]
+94104759490400 -> 94104759691312[arrowtail=diamond, dir=both, headlabel="using 0..*"]
+94104759490400 -> 94104759715728[arrowtail=diamond, dir=both, headlabel="variables 0..*"]
+94104759679648 -> 94104759674112[headlabel="package "]
+94104759691312 -> 94104759685184[headlabel="script "]
+94104759697968 -> 94104759685184[headlabel="mc "]
+94104759702912 -> 94104759697968[headlabel="value "]
+94104759677648 -> 94104759697968[headlabel="key "]
+94104759677648 -> 94104759697968[headlabel="value "]
+94104759512176 -> 94104759685184[headlabel="v 1..*"]
+94104759715728 -> 94104759721264 [dir=back]
+94104759715728 -> 94104759726800 [dir=back]
+94104759715728 -> 94104759732336 [dir=back]
+94104759715728 -> 94104759743408 [dir=back]
+94104759737872 -> 94104759512176[arrowtail=diamond, dir=both, headlabel="key "]
+94104759737872 -> 94104759512176[arrowtail=diamond, dir=both, headlabel="value "]
+94104759713728 -> 94104759715728[arrowtail=diamond, dir=both, headlabel="args 1..*"]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>Keyword</b></td><td>var|int|float|bool|list|dict|package|import|model|controller|use|and|or|hide|from|as|default|if|else|for|in|while|do|break|skip|return|true|false|null|this|on|set|get|enum</td>
+	</tr>
+	<tr>
+		<td><b>MyID</b></td><td>Not(Keyword) ID</td>
+	</tr>
+</table> >]
+
+
+}
