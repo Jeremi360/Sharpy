@@ -29,7 +29,7 @@ class TestLexer(unittest.TestCase):
 				('FUNC', 'func'), ('IDENTIFIER', 'my_function'), ('COLON', ':'),
 				('IF', 'if'), ('IDENTIFIER', 'x'), ('GREATER', '>'), ('IDENTIFIER', 'y'), ('COLON', ':'),
 				('IDENTIFIER', 'z'), ('EQUALS', '='), ('IDENTIFIER', 'x'), ('MINUS', '-'), ('IDENTIFIER', 'y'), ('SEMICOLON', ';'),
-				('ELSE', 'else'), ('COLON', ':'),
+				('SEMICOLON', ';'), ('ELSE', 'else'), ('COLON', ':'),
 				('IDENTIFIER', 'z'), ('EQUALS', '='), ('IDENTIFIER', 'y'), ('MINUS', '-'), ('IDENTIFIER', 'x'), ('SEMICOLON', ';'),
 				('SEMICOLON', ';')
 			]
