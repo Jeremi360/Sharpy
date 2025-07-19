@@ -19,18 +19,18 @@ class TestParser(unittest.TestCase):
 		data = "var x = ;"
 		with self.assertRaises(SyntaxError): parser.parse(data)
 
-	## to fix
-	# def test_if_statement(self):
-	# 	data = "if x > 5: x = 10;"
-	# 	result = parser.parse(data)
-	# 	expected = ('program', [(
-	# 		'if', ('binop', '>', ('identifier', 'x'), ('number', 5)),
-	# 			[('assignment', 'x', ('number', 10))]
-	# 		)])
-	# 	self.assertEqual(result, expected)
+	def test_if_statement(self):
+		data = "if x > 5: x = 10; ;"
+		result = parser.parse(data)
+		expected = ('program', [(
+			'if', ('binop', '>', ('identifier', 'x'), ('number', 5)),
+				[('assignment', 'x', ('number', 10))]
+			)])
+		self.assertEqual(result, expected)
 
+	## to fix
 	# def test_if_else_statement(self):
-	# 	data = "if x > 5: x = 10; else: x = 20;"
+	# 	data = "if x > 5: x = 10; ;else: x = 20; ;"
 	# 	result = parser.parse(data)
 	# 	expected = ('program', [(
 	# 		'if_else', ('binop', '>', ('identifier', 'x'), ('number', 5)),
