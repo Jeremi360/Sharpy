@@ -6,7 +6,8 @@ tokens = (
 	'EQUALS', 'PLUS', 'MINUS', 'MULTIPLY', 'DIVIDE',
 	'LPAREN', 'RPAREN', 'NEWLINE', 'COMMENT',
 	'GREATER', 'LESS', 'GREATER_EQUAL', 'LESS_EQUAL', 'NOT_EQUAL',
-	'PLUS_EQUAL', 'MINUS_EQUAL', 'MULTIPLY_EQUAL', 'DIVIDE_EQUAL'
+	'PLUS_EQUAL', 'MINUS_EQUAL', 'MULTIPLY_EQUAL', 'DIVIDE_EQUAL', 'EQUALS_EQUALS',
+	'SEMICOLON_EQUALS_EQUALS', 'SEMICOLON_GREATER', 'SEMICOLON_NOT_EQUAL'
 )
 
 # Reserved keywords
@@ -26,7 +27,7 @@ reserved = {
 	'signal': 'SIGNAL',
 	'on': 'ON',
 	'true': 'TRUE',
-	'false': 'FALSE'
+	'false': 'FALSE',
 }
 
 tokens = tokens + tuple(reserved.values())
@@ -36,6 +37,7 @@ t_ignore = ' \t'  # Ignore spaces and tabs
 t_COLON = r':'
 t_SEMICOLON = r';'
 t_EQUALS = r'='
+t_EQUALS_EQUALS = r'=='
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_MULTIPLY = r'\*'
@@ -51,6 +53,11 @@ t_PLUS_EQUAL = r'\+='
 t_MINUS_EQUAL = r'-='
 t_MULTIPLY_EQUAL = r'\*='
 t_DIVIDE_EQUAL = r'/='
+
+# Added tokens for `;==`, `;>`, and similar patterns
+t_SEMICOLON_EQUALS_EQUALS = r';=='
+t_SEMICOLON_GREATER = r';>'
+t_SEMICOLON_NOT_EQUAL = r';!='
 
 def t_IDENTIFIER(t):
 	r'[a-zA-Z_][a-zA-Z0-9_]*'

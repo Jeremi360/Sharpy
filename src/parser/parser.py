@@ -47,6 +47,28 @@ def p_statement_if_else(p):
     # print("DEBUG: if_else rule triggered with:", p[2], p[4], p[8])
     p[0] = ('if_else', p[2], p[4], p[8])
 
+def p_statement_if_switch_case(p):
+    '''statement : IF expression COLON statement_list case_conditions ELSE COLON statement_list SEMICOLON
+                 | IF expression COLON statement_list case_conditions SEMICOLON'''
+    if len(p) == 9:
+        p[0] = ('if_switch_case', p[2], p[4], p[5], p[8])
+    else:
+        p[0] = ('if_switch_case', p[2], p[4], p[5], p[7])
+
+def p_case_conditions(p):
+    '''case_conditions : case_conditions case_condition
+                       | case_condition'''
+    if len(p) == 3:
+        p[0] = p[1] + [p[2]]
+    else:
+        p[0] = [p[1]]
+
+def p_case_condition(p):
+    '''case_condition : SEMICOLON_EQUALS_EQUALS expression COLON statement_list
+                      | SEMICOLON_GREATER expression COLON statement_list
+                      | SEMICOLON_NOT_EQUAL expression COLON statement_list'''
+    p[0] = ('case_condition', p[1], p[2], p[4])
+
 # Expressions
 def p_expression_binop(p):
 	'''expression : expression PLUS expression
@@ -57,7 +79,8 @@ def p_expression_binop(p):
 								| expression LESS expression
 								| expression GREATER_EQUAL expression
 								| expression LESS_EQUAL expression
-								| expression NOT_EQUAL expression'''
+								| expression NOT_EQUAL expression
+								| expression EQUALS_EQUALS expression'''
 	p[0] = ('binop', p[2], p[1], p[3])
 
 def p_expression_group(p):

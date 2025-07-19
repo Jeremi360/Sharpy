@@ -28,7 +28,6 @@ class TestParser(unittest.TestCase):
 			)])
 		self.assertEqual(result, expected)
 
-	## to fix
 	def test_if_else_statement(self):
 		data = "if x > 5: x = 10; ;else: x = 20; ;"
 		result = parser.parse(data)
