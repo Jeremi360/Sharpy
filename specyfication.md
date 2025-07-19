@@ -5,6 +5,7 @@ This langue is inspired by C#, nim, Python, GDScript and natural langue.
 I want to avoid brackets as much as possible in this langue.
 
 It uses `:;` instead of brackets and for code blocks.
+But `()` are still used in math.
 
 I use a lot of indent, but its optional, 
 but should give waring about making bad code ;)
@@ -183,7 +184,7 @@ if some_var == value_a: # first case
 		# code
 	;else: # default case
 		# else code
-;; # we ends else-code-block and switch-block at once
+;
 
 # for conditions we can use python keywords:
 # not, and, or, in, true and false
@@ -286,4 +287,6 @@ on button.pressed: _on_some_signal;
 # we can like C do:
 some_int++
 some_int--
+
+# use tabs for ident in script/source code 
 ```
