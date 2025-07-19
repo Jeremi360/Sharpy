@@ -39,13 +39,13 @@ def p_statement_assignment_or_expression(p):
 # Add rules for if-else statements
 def p_statement_if(p):
 		'statement : IF expression COLON statement_list SEMICOLON'
-		print("DEBUG: if rule triggered with:", p[2], p[4])
+		# print("DEBUG: if rule triggered with:", p[2], p[4])
 		p[0] = ('if', p[2], p[4])
 
 def p_statement_if_else(p):
-	'statement : IF expression COLON statement_list SEMICOLON ELSE COLON statement_list SEMICOLON'
-	print("DEBUG: if_else rule triggered with:", p[2], p[4], p[7])
-	p[0] = ('if_else', p[2], p[4], p[7])
+    'statement : IF expression COLON statement_list SEMICOLON ELSE COLON statement_list SEMICOLON'
+    # print("DEBUG: if_else rule triggered with:", p[2], p[4], p[8])
+    p[0] = ('if_else', p[2], p[4], p[8])
 
 # Expressions
 def p_expression_binop(p):
